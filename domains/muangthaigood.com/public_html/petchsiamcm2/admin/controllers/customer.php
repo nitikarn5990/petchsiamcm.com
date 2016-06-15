@@ -162,6 +162,13 @@ if ($_GET['id'] != '' && $_GET['action'] == 'edit') {
                                 </div>
 
                             </div>
+                                <div class="da-form-row">
+                                <label class="da-form-label">รหัสบัตรประชาชน <span class="required">*</span></label>
+                                <div class="da-form-item large ">
+                                    <input type="text" name="idcard" id="idcard" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('idcard') : ''; ?>" class="span12 required" />
+                                </div>
+
+                            </div>
                             <div class="da-form-row">
                                 <label class="da-form-label">เบอร์โทร<span class="required">*</span></label>
                                 <div class="da-form-item large">
