@@ -162,7 +162,7 @@ if ($_GET['id'] != '' && $_GET['action'] == 'edit') {
                                 </div>
 
                             </div>
-                                <div class="da-form-row">
+                            <div class="da-form-row">
                                 <label class="da-form-label">รหัสบัตรประชาชน <span class="required">*</span></label>
                                 <div class="da-form-item large ">
                                     <input type="text" name="idcard" id="idcard" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('idcard') : ''; ?>" class="span12 required" />
@@ -194,6 +194,72 @@ if ($_GET['id'] != '' && $_GET['action'] == 'edit') {
                                     <input type="text" name="zipcode" id="zipcode" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('zipcode') : ''; ?>" class="span12 required" />
                                 </div>
                             </div>
+                            <fieldset>
+                                <legend><b>ไฟล์แนบ</b></legend>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">ไฟล์แนบ <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset>
+                                <legend><b>หน้าสมุดบัญชี</b></legend>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">ชื่อธนาคาร <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <select name="bank_company" class="span12 required">
+                                            <option value="">---- เลือก ----</option>
+                                            <?php
+                                            $sql = "SELECT * FROM " . $bank_company->getTbl() . " ORDER BY bank_name ";
+
+                                            $query = $db->Query($sql);
+
+                                            if ($db->NumRows($query) > 0) {
+                                                ?>
+                                                <?php while ($row = $db->FetchArray($query)) { ?>
+                                                    <option value="<?= $row['bank_name'] ?>" <?= $customer->GetValue('bank_company')==$row['bank_name']?'selected':'' ?>><?= $row['bank_name'] ?></option>
+
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">ประเภทบัญชี <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <select name="bank_type_account" class="span12 required">
+                                            <option value="">---- เลือก ----</option>
+                                            <option value="เงินฝากออมทรัพย์"  <?= $customer->GetValue('bank_type_account')=='เงินฝากออมทรัพย์' ? 'selected':'' ?>>เงินฝากออมทรัพย์</option>
+                                            <option value="เงินฝากประจำ" <?= $customer->GetValue('bank_type_account')=='เงินฝากประจำ' ? 'selected':'' ?>>เงินฝากประจำ</option>
+                                            <option value="เงินฝากกระแสรายวัน" <?= $customer->GetValue('bank_type_account')=='เงินฝากกระแสรายวัน' ? 'selected':'' ?>>เงินฝากกระแสรายวัน</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">ชื่อบัญชี <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <input type="text" name="bank_name" id="" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('bank_name') : ''; ?>" class="span12 required" />
+                                    </div>
+                                </div>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">เลขบัญชี <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <input type="text" name="bank_number" id="" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('bank_number') : ''; ?>" class="span12 required" />
+                                    </div>
+                                </div>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">สาขา <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <input type="text" name="bank_branch" id="" value="<?php echo ($customer->GetPrimary() != '') ? $customer->GetValue('bank_branch') : ''; ?>" class="span12 required" />
+                                    </div>
+                                </div>
+
+
+
+                            </fieldset>
                             <fieldset>
                                 <legend><b>การเข้าสู่ระบบ</b></legend>
                                 <div class="da-form-row">
@@ -229,6 +295,16 @@ if ($_GET['id'] != '' && $_GET['action'] == 'edit') {
                                         </ul>
                                     </div>
                                 </div>
+                            </fieldset>
+                             <fieldset>
+                                <legend><b>Refer (ผู้แนะนำ)</b></legend>
+                                <div class="da-form-row">
+                                    <label class="da-form-label">ผู้แนะนำ <span class="required">*</span></label>
+                                    <div class="da-form-item large">
+                                        <input type="text" name="customer_refer_id" id="login_email" value="" class="span12 required" />
+                                    </div>
+                                </div>
+                             
                             </fieldset>
                             <fieldset>
                                 <legend><b>ข้อมูลเข้าสู่ระบบ</b></legend>

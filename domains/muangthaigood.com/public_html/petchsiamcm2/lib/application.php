@@ -73,6 +73,7 @@
         $promotion = new Promotion;
         
         $social = new Social;
+        $footer = new Footer;
 	
 	$ProID = $_GET['productID'];
 ?>

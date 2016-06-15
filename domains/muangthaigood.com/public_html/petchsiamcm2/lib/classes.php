@@ -338,6 +338,13 @@ class Social extends DbTemplate {
     }
 
 }
+class Footer extends DbTemplate {
 
+    function __construct() {
+        // Call the parent constructor
+        parent::__construct('footer', DB_DEFAULT);
+    }
+
+}
 
 ?>

@@ -289,7 +289,7 @@ if ($_GET['id'] != '' && $_GET['action'] == 'edit') {
                             <input type="text" placeholder="" name="alt_tag" value="<?php echo $slides->GetValue('alt_tag')?>" >
                             <input type="file" name="file_array[]" id="image"  class="span4"/>
               
-                            <label class="da-form-label"> <span class="required">*</span>ขนาดรูปภาพแนะนำ 1170x400</label>
+                            <label class="da-form-label"> <span class="required"></span></label>
                             
                         </div>
                     </div>
